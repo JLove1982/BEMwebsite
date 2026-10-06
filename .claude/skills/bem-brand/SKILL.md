@@ -72,7 +72,7 @@ All four components read `data-width` and `data-height` from their root and adap
 | Intro bumper | `cards/custom/bem-intro.html` | `tagline`, `kicker` | Opaque, 5s. Arcs and monogram draw, the wordmark tracks in, the gold rule draws, then the tagline appears. Defaults to the brand tagline and mission kicker. For a series or event, put the series name in `tagline` (for example "Executive Fireside Chats"). |
 | Outro end card | `cards/custom/bem-outro.html` | `kicker`, `cta`, `sub`, `url` | Opaque, 8s, the final scene. A gold frame draws around the CTA, the lockup settles, then it fades to navy. |
 | Lower third | `cards/tier2/t2-lt-executive.html` | `name`, `role`, `org` | Transparent overlay, 6s by default. Includes its own exit. Show it once per speaker, 1 to 3s after they start speaking. |
-| Captions | `cards/custom/bem-captions.html` | transcript JSON, emphasis list | Paste the word-level transcript of the **edited** footage into `#bem-words`. List names and brand terms in `#bem-emphasis`; numbers turn gold automatically. Set `data-plate="true"` for busy footage and for most 9:16 social video. |
+| Captions | `cards/custom/bem-captions.html` | transcript JSON, emphasis list | Put the word-level transcript of the **edited** footage in the script's `WORDS` array and names or brand terms in `EMPH`; numbers turn gold automatically. Set `data-plate="true"` for busy footage and for most 9:16 social video. |
 
 Filling slots: replace the text of each `data-slot` element and respect the max
 characters in `style.json`. Names must match exactly what the user gave.
