@@ -1,0 +1,81 @@
+{
+  "$schema": "../registry.schema.json",
+  "id": "bem-executive",
+  "name": "BEM Executive",
+  "number": "03",
+  "status": "draft",
+  "inspiration": "Black Executive Men brand: website banner, BEM monogram, Sponsorship Summit poster, executive office scene, and the Executive Fireside Chats series overview. Reference images live in references/.",
+  "summary": "Boardroom prestige for every Black Executive Men video: deep navy, warm gold hairlines, classical serif, slow confident reveals. Use for any BEM video, whatever the format.",
+  "palette": {
+    "bg": "#011B42",
+    "fg": "#FFFFFF",
+    "accent": "#E0B264",
+    "navyDeep": "#000F29",
+    "navyRoyal": "#0B3470",
+    "goldBright": "#E3A91A",
+    "goldMuted": "#8E774D",
+    "ivory": "#F4EFE4",
+    "notes": "Navy + gold + white. Gold stays around 10% of the frame. goldBright is reserved for the monogram frame. Mirrored in tokens.css."
+  },
+  "fonts": {
+    "display": "EB Garamond",
+    "caps": "Cinzel",
+    "body": "Lato",
+    "mono": "Lato",
+    "notes": "EB Garamond = wordmark, names, headlines. Cinzel = Trajan-style event titles, kickers, URLs. Lato = roles, captions, body (Gill Sans stand-in)."
+  },
+  "motion": "Executive and polished: power3.out / expo.out entrances, power2.inOut line draws, sine.inOut ambient push-ins. No back/elastic/bounce.",
+  "transitions": "Soft crossfades or a dip to navy between scenes; gold rules and frames draw on; lower thirds wipe open from a gold edge.",
+  "formats": ["1920x1080", "1080x1920", "1080x1080"],
+  "cards": [
+    {
+      "id": "bem-executive.custom.intro",
+      "tier": "custom",
+      "purpose": "intro",
+      "file": "cards/custom/bem-intro.html",
+      "slots": [
+        { "name": "tagline", "type": "text", "maxChars": 60 },
+        { "name": "kicker", "type": "text", "maxChars": 48 }
+      ],
+      "duration": { "min": 4, "max": 6 },
+      "preview": { "mp4": "preview/bem-executive.custom.intro.mp4", "poster": "preview/bem-executive.custom.intro.png" }
+    },
+    {
+      "id": "bem-executive.custom.outro",
+      "tier": "custom",
+      "purpose": "outro",
+      "file": "cards/custom/bem-outro.html",
+      "slots": [
+        { "name": "kicker", "type": "text", "maxChars": 36 },
+        { "name": "cta", "type": "text", "maxChars": 40 },
+        { "name": "sub", "type": "text", "maxChars": 70 },
+        { "name": "url", "type": "text", "maxChars": 32 }
+      ],
+      "duration": { "min": 6, "max": 10 },
+      "preview": { "mp4": "preview/bem-executive.custom.outro.mp4", "poster": "preview/bem-executive.custom.outro.png" }
+    },
+    {
+      "id": "bem-executive.t2.lower-third.executive",
+      "tier": "tier2",
+      "purpose": "lower-third",
+      "treatment": "executive",
+      "file": "cards/tier2/t2-lt-executive.html",
+      "slots": [
+        { "name": "name", "type": "text", "maxChars": 28 },
+        { "name": "role", "type": "text", "maxChars": 48 },
+        { "name": "org", "type": "text", "maxChars": 36 }
+      ],
+      "duration": { "min": 4, "max": 8 },
+      "preview": { "mp4": "preview/bem-executive.t2.lower-third.executive.mp4", "poster": "preview/bem-executive.t2.lower-third.executive.png" }
+    },
+    {
+      "id": "bem-executive.custom.captions",
+      "tier": "custom",
+      "purpose": "captions",
+      "file": "cards/custom/bem-captions.html",
+      "slots": [],
+      "duration": { "min": 1, "max": 3600 },
+      "preview": { "mp4": "preview/bem-executive.custom.captions.mp4", "poster": "preview/bem-executive.custom.captions.png" }
+    }
+  ]
+}

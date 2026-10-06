@@ -1,0 +1,211 @@
+<!doctype html>
+<!--
+  BEM EXECUTIVE · custom · intro bumper
+  Navy canvas. Gold arcs sweep in from the lower left, a faint globe turns at
+  the right, the BEM monogram frame draws itself, the letters rise, then the
+  BLACK EXECUTIVE MEN wordmark tracks in over a drawn gold rule, followed by
+  the tagline and the spaced-caps mission kicker.
+  Opaque (it opens the video). Format-adaptive: set data-width / data-height
+  to 1920x1080, 1080x1920 or 1080x1080.
+  Slots: tagline (~60 chars), kicker (~48 chars).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../tokens.css" />
+    <style>
+      html, body { margin: 0; background: var(--navy); }
+
+      #bem-intro {
+        position: absolute; left: 0; top: 0; overflow: hidden;
+        background: var(--navy);
+        font-family: var(--font-display);
+      }
+      #bem-intro .layer { position: absolute; inset: 0; pointer-events: none; }
+      #bem-intro .pool { background: var(--pool); }
+      #bem-intro .vignette { background: var(--vignette); }
+      #bem-intro .grain { background-image: var(--tex-grain); opacity: 0.07; mix-blend-mode: overlay; }
+
+      /* ornament: gold arcs from the banner */
+      #bem-intro .arcs {
+        position: absolute;
+        width: calc(1200 * var(--u)); height: calc(1200 * var(--u));
+        left: calc(-640 * var(--u)); bottom: calc(-700 * var(--u));
+      }
+      #bem-intro .arcs circle { fill: none; stroke: var(--gold); stroke-width: 1.6; }
+
+      /* ornament: faint globe wireframe */
+      #bem-intro .globe {
+        position: absolute;
+        width: calc(900 * var(--u)); height: calc(900 * var(--u));
+        right: calc(-420 * var(--u)); top: calc(-160 * var(--u));
+        opacity: 0.10;
+      }
+      #bem-intro .globe * { fill: none; stroke: var(--gold-muted); stroke-width: 1.2; }
+
+      /* centered lockup */
+      #bem-intro .lockup {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center;
+        padding: 0 calc(80 * var(--u));
+      }
+
+      #bem-intro .mono {
+        position: relative;
+        width: calc(150 * var(--u)); height: calc(150 * var(--u));
+        margin-bottom: calc(56 * var(--u));
+      }
+      #bem-intro .mono svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+      #bem-intro .mono rect { fill: none; stroke: var(--gold-bright); stroke-width: 3; }
+      #bem-intro .mono .letters {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: var(--wt-med);
+        font-size: calc(58 * var(--u)); letter-spacing: 0.02em;
+        color: var(--white); line-height: 1;
+      }
+
+      #bem-intro .wordmark {
+        font-family: var(--font-display); font-weight: var(--wt-med);
+        font-size: calc(var(--wm) * var(--u));
+        letter-spacing: var(--track-wordmark);
+        color: var(--gold);
+        line-height: 1; white-space: nowrap;
+        /* tracking adds trailing space after the last letter; pull it back to stay centered */
+        margin-right: calc(-0.10em);
+      }
+      #bem-intro .wordmark .ch { display: inline-block; white-space: pre; }
+      #bem-intro.fmt-landscape { --wm: 92; }
+      #bem-intro.fmt-portrait  { --wm: 54; }
+      #bem-intro.fmt-square    { --wm: 56; }
+
+      #bem-intro .wm-block { display: flex; flex-direction: column; align-items: stretch; }
+      #bem-intro .rule {
+        height: calc(4 * var(--u));
+        background: var(--gold);
+        margin: calc(30 * var(--u)) 0 calc(30 * var(--u));
+        transform-origin: center center;
+      }
+
+      #bem-intro .tagline {
+        font-family: var(--font-display); font-weight: var(--wt-reg);
+        font-size: calc(44 * var(--u));
+        color: var(--white); line-height: 1.25;
+        max-width: calc(1400 * var(--u));
+      }
+      #bem-intro.fmt-portrait .tagline,
+      #bem-intro.fmt-square .tagline { font-size: calc(40 * var(--u)); max-width: calc(860 * var(--u)); }
+
+      #bem-intro .kicker {
+        margin-top: calc(26 * var(--u));
+        font-family: var(--font-caps); font-weight: var(--wt-semi);
+        font-size: calc(22 * var(--u));
+        letter-spacing: var(--track-caps);
+        color: var(--gold); line-height: 1.7;
+        text-transform: uppercase;
+        max-width: calc(1400 * var(--u));
+      }
+      #bem-intro.fmt-portrait .kicker,
+      #bem-intro.fmt-square .kicker { max-width: calc(820 * var(--u)); }
+    </style>
+  </head>
+  <body>
+    <div id="bem-intro" class="bem-root"
+         data-composition-id="bem-intro"
+         data-start="0"
+         data-duration="5"
+         data-width="1920"
+         data-height="1080">
+
+      <div class="layer pool"></div>
+
+
+      <div class="lockup">
+        <div class="mono">
+          <svg viewBox="0 0 150 150" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="147" height="147" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          </svg>
+          <div class="letters">BEM</div>
+        </div>
+        <div class="wm-block">
+          <div class="wordmark">BLACK EXECUTIVE MEN</div>
+          <div class="rule"></div>
+        </div>
+        <div class="tagline" data-slot="tagline">The Network for C-Suite Executives and Vice Presidents</div>
+        <div class="kicker" data-slot="kicker">To Advance Black Male Enterprise Leadership</div>
+      </div>
+
+      <div class="layer vignette"></div>
+
+      <svg class="globe" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="96" />
+        <ellipse cx="100" cy="100" rx="70" ry="96" />
+        <ellipse cx="100" cy="100" rx="38" ry="96" />
+        <line x1="100" y1="4" x2="100" y2="196" />
+        <ellipse cx="100" cy="100" rx="96" ry="58" />
+        <ellipse cx="100" cy="100" rx="96" ry="24" />
+        <line x1="4" y1="100" x2="196" y2="100" />
+      </svg>
+
+      <svg class="arcs" viewBox="0 0 1200 1200" aria-hidden="true">
+        <circle class="arc arc-1" cx="600" cy="600" r="590" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 600 600)" />
+        <circle class="arc arc-2" cx="600" cy="600" r="530" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 600 600)" />
+      </svg>
+      <div class="layer grain"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var ID = "bem-intro";
+        var root = document.getElementById(ID);
+        /* format scaling: --u is 1px at 1080 on the short side */
+        var W = +root.dataset.width, H = +root.dataset.height;
+        root.style.width = W + "px"; root.style.height = H + "px";
+        root.style.setProperty("--u", (Math.min(W, H) / 1080) + "px");
+        root.classList.add(W > H * 1.1 ? "fmt-landscape" : H > W * 1.1 ? "fmt-portrait" : "fmt-square");
+
+        var DURATION = +root.dataset.duration || 5;
+        var q = function (s) { return "#" + ID + " " + s; };
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        /* ambient: pool breathes in, globe drifts, whole canvas pushes in slowly */
+        tl.from(q(".pool"), { autoAlpha: 0, duration: 1.6, ease: "sine.inOut" }, 0);
+        tl.from(q(".globe"), { autoAlpha: 0, duration: 2.0, ease: "sine.inOut" }, 0.2);
+        tl.to(q(".globe"), { rotation: 8, duration: DURATION, ease: "none" }, 0);
+        tl.fromTo(q(".lockup"), { scale: 1.0 }, { scale: 1.035, duration: DURATION, ease: "sine.inOut" }, 0);
+
+        /* gold arcs draw like a pen stroke */
+        tl.to(q(".arc-1"), { attr: { "stroke-dashoffset": 0.72 }, duration: 1.8, ease: "power2.inOut" }, 0.15);
+        tl.to(q(".arc-2"), { attr: { "stroke-dashoffset": 0.72 }, duration: 1.8, ease: "power2.inOut" }, 0.35);
+
+        /* monogram: frame draws, letters rise */
+        tl.to(q(".mono rect"), { attr: { "stroke-dashoffset": 0 }, duration: 1.2, ease: "power2.inOut" }, 0.3);
+        tl.from(q(".mono .letters"), { autoAlpha: 0, y: 14, duration: 0.9, ease: "power3.out" }, 0.95);
+
+        /* wordmark tracks in: glyphs gather toward their final spacing (transform only) */
+        var wm = root.querySelector(".wordmark");
+        var text = wm.textContent; wm.textContent = "";
+        for (var i = 0; i < text.length; i++) {
+          var c = document.createElement("span"); c.className = "ch"; c.textContent = text[i]; wm.appendChild(c);
+        }
+        var chars = wm.querySelectorAll(".ch");
+        var mid = (chars.length - 1) / 2;
+        var spread = parseFloat(getComputedStyle(wm).fontSize) * 0.32;
+        tl.from(chars, { autoAlpha: 0, x: function (i) { return (i - mid) * spread; }, duration: 1.4, ease: "expo.out" }, 1.45);
+
+        /* rule draws from the center */
+        tl.from(q(".rule"), { scaleX: 0, duration: 1.1, ease: "power2.inOut" }, 1.85);
+
+        /* supporting lines rise and settle */
+        tl.from(q(".tagline"), { autoAlpha: 0, y: 16, duration: 0.9, ease: "power3.out" }, 2.45);
+        tl.from(q(".kicker"), { autoAlpha: 0, y: 10, duration: 1.0, ease: "power3.out" }, 2.8);
+
+        tl.set({}, {}, DURATION);
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </body>
+</html>

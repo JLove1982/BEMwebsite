@@ -1,0 +1,192 @@
+<!doctype html>
+<!--
+  BEM EXECUTIVE · custom · outro end card
+  Navy canvas with gold arcs at the upper right. A centered square gold frame
+  (the summit poster's callout box) draws itself around the call to action,
+  then the BEM monogram + wordmark lockup and the URL settle below a rule.
+  Opaque (it closes the video). Format-adaptive: 1920x1080, 1080x1920, 1080x1080.
+  This is the final scene, so it ends with a slow fade to navy.
+  Slots: kicker (~36 chars), cta (~40 chars), sub (~70 chars), url (~32 chars).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../tokens.css" />
+    <style>
+      html, body { margin: 0; background: var(--navy); }
+
+      #bem-outro {
+        position: absolute; left: 0; top: 0; overflow: hidden;
+        background: var(--navy);
+        font-family: var(--font-display);
+      }
+      #bem-outro .layer { position: absolute; inset: 0; pointer-events: none; }
+      #bem-outro .pool { background: var(--pool); }
+      #bem-outro .vignette { background: var(--vignette); }
+      #bem-outro .grain { background-image: var(--tex-grain); opacity: 0.07; mix-blend-mode: overlay; }
+      #bem-outro .fade { background: var(--navy); opacity: 0; }
+
+      #bem-outro .arcs {
+        position: absolute;
+        width: calc(1200 * var(--u)); height: calc(1200 * var(--u));
+        right: calc(-640 * var(--u)); top: calc(-700 * var(--u));
+      }
+      #bem-outro.fmt-square .arcs { right: calc(-860 * var(--u)); top: calc(-880 * var(--u)); }
+      #bem-outro .arcs circle { fill: none; stroke: var(--gold); stroke-width: 1.6; }
+
+      #bem-outro .stack {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center;
+        padding: 0 calc(80 * var(--u));
+      }
+
+      /* the CTA frame */
+      #bem-outro .frame {
+        position: relative;
+        padding: calc(54 * var(--u)) calc(90 * var(--u)) calc(58 * var(--u));
+        max-width: calc(1300 * var(--u));
+      }
+      #bem-outro.fmt-portrait .frame,
+      #bem-outro.fmt-square .frame { padding: calc(48 * var(--u)) calc(52 * var(--u)) calc(52 * var(--u)); max-width: calc(900 * var(--u)); }
+      #bem-outro .frame .ln { position: absolute; background: var(--gold); }
+      #bem-outro .frame .ln-t { left: 0; right: 0; top: 0; height: var(--hairline); transform-origin: left center; }
+      #bem-outro .frame .ln-r { top: 0; bottom: 0; right: 0; width: var(--hairline); transform-origin: center top; }
+      #bem-outro .frame .ln-b { left: 0; right: 0; bottom: 0; height: var(--hairline); transform-origin: right center; }
+      #bem-outro .frame .ln-l { top: 0; bottom: 0; left: 0; width: var(--hairline); transform-origin: center bottom; }
+
+      #bem-outro .kicker {
+        font-family: var(--font-caps); font-weight: var(--wt-semi);
+        font-size: calc(22 * var(--u)); letter-spacing: var(--track-caps);
+        color: var(--gold); text-transform: uppercase; line-height: 1.6;
+        margin-bottom: calc(18 * var(--u));
+      }
+      #bem-outro .cta {
+        font-family: var(--font-caps); font-weight: var(--wt-reg);
+        font-size: calc(86 * var(--u)); line-height: 1.08;
+        color: var(--white); letter-spacing: 0.04em;
+      }
+      #bem-outro.fmt-portrait .cta,
+      #bem-outro.fmt-square .cta { font-size: calc(70 * var(--u)); }
+      #bem-outro .sub {
+        margin-top: calc(22 * var(--u));
+        font-family: var(--font-body); font-weight: var(--wt-light);
+        font-size: calc(32 * var(--u)); line-height: 1.4;
+        color: var(--ivory);
+      }
+
+      /* lockup under the frame */
+      #bem-outro .lockup {
+        display: flex; align-items: center; gap: calc(28 * var(--u));
+        margin-top: calc(64 * var(--u));
+      }
+      #bem-outro .mono {
+        width: calc(96 * var(--u)); height: calc(96 * var(--u)); flex: none;
+        box-sizing: border-box;
+        border: calc(2.5 * var(--u)) solid var(--gold-bright);
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: var(--wt-med);
+        font-size: calc(37 * var(--u)); color: var(--white); line-height: 1;
+      }
+      #bem-outro .names { text-align: left; }
+      #bem-outro .wordmark {
+        font-family: var(--font-display); font-weight: var(--wt-med);
+        font-size: calc(44 * var(--u)); letter-spacing: var(--track-wordmark);
+        color: var(--gold); line-height: 1.05; white-space: nowrap;
+      }
+      #bem-outro .rule {
+        height: calc(2.5 * var(--u)); background: var(--gold);
+        margin: calc(10 * var(--u)) 0 calc(10 * var(--u));
+        transform-origin: left center;
+      }
+      #bem-outro .url {
+        font-family: var(--font-caps); font-weight: var(--wt-semi);
+        font-size: calc(22 * var(--u)); letter-spacing: var(--track-label);
+        color: var(--ivory); white-space: nowrap;
+      }
+      #bem-outro.fmt-portrait .wordmark { font-size: calc(36 * var(--u)); }
+    </style>
+  </head>
+  <body>
+    <div id="bem-outro" class="bem-root"
+         data-composition-id="bem-outro"
+         data-start="0"
+         data-duration="8"
+         data-width="1920"
+         data-height="1080">
+
+      <div class="layer pool"></div>
+      <div class="layer vignette"></div>
+
+      <svg class="arcs" viewBox="0 0 1200 1200" aria-hidden="true">
+        <circle class="arc arc-1" cx="600" cy="600" r="590" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(90 600 600)" />
+        <circle class="arc arc-2" cx="600" cy="600" r="530" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(90 600 600)" />
+      </svg>
+
+      <div class="stack">
+        <div class="frame">
+          <div class="ln ln-t"></div><div class="ln ln-r"></div><div class="ln ln-b"></div><div class="ln ln-l"></div>
+          <div class="kicker" data-slot="kicker">Elite Membership Network</div>
+          <div class="cta" data-slot="cta">Join the Network</div>
+          <div class="sub" data-slot="sub">For C-Suite Executives and Vice Presidents</div>
+        </div>
+
+        <div class="lockup">
+          <div class="mono">BEM</div>
+          <div class="names">
+            <div class="wordmark">BLACK EXECUTIVE MEN</div>
+            <div class="rule"></div>
+            <div class="url" data-slot="url">blackexecutivemen.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer grain"></div>
+      <div class="layer fade"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var ID = "bem-outro";
+        var root = document.getElementById(ID);
+        var W = +root.dataset.width, H = +root.dataset.height;
+        root.style.width = W + "px"; root.style.height = H + "px";
+        root.style.setProperty("--u", (Math.min(W, H) / 1080) + "px");
+        root.classList.add(W > H * 1.1 ? "fmt-landscape" : H > W * 1.1 ? "fmt-portrait" : "fmt-square");
+
+        var DURATION = +root.dataset.duration || 8;
+        var q = function (s) { return "#" + ID + " " + s; };
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        /* ambient */
+        tl.from(q(".pool"), { autoAlpha: 0, duration: 1.4, ease: "sine.inOut" }, 0);
+        tl.fromTo(q(".stack"), { scale: 1.0 }, { scale: 1.03, duration: DURATION, ease: "sine.inOut" }, 0);
+        tl.to(q(".arc-1"), { attr: { "stroke-dashoffset": 0.72 }, duration: 1.8, ease: "power2.inOut" }, 0.1);
+        tl.to(q(".arc-2"), { attr: { "stroke-dashoffset": 0.72 }, duration: 1.8, ease: "power2.inOut" }, 0.3);
+
+        /* the frame draws, then its contents rise */
+        tl.from(q(".ln-t"), { scaleX: 0, duration: 0.55, ease: "power2.in" }, 0.2);
+        tl.from(q(".ln-r"), { scaleY: 0, duration: 0.3, ease: "none" }, 0.75);
+        tl.from(q(".ln-b"), { scaleX: 0, duration: 0.55, ease: "none" }, 1.05);
+        tl.from(q(".ln-l"), { scaleY: 0, duration: 0.4, ease: "power2.out" }, 1.6);
+        tl.from(q(".kicker"), { autoAlpha: 0, y: 10, duration: 0.8, ease: "power3.out" }, 0.8);
+        tl.from(q(".cta"), { autoAlpha: 0, y: 20, duration: 1.0, ease: "expo.out" }, 1.0);
+        tl.from(q(".sub"), { autoAlpha: 0, y: 12, duration: 0.9, ease: "power3.out" }, 1.4);
+
+        /* lockup settles */
+        tl.from(q(".mono"), { autoAlpha: 0, y: 12, duration: 0.9, ease: "power3.out" }, 2.0);
+        tl.from(q(".wordmark"), { autoAlpha: 0, x: -16, duration: 1.0, ease: "expo.out" }, 2.2);
+        tl.from(q(".rule"), { scaleX: 0, duration: 1.0, ease: "power2.inOut" }, 2.4);
+        tl.from(q(".url"), { autoAlpha: 0, y: 8, duration: 0.8, ease: "power3.out" }, 2.8);
+
+        /* final scene: slow fade to navy */
+        tl.to(q(".fade"), { opacity: 1, duration: 0.9, ease: "power2.in" }, DURATION - 0.9);
+
+        tl.set({}, {}, DURATION);
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </body>
+</html>

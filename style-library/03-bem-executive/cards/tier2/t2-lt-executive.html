@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  BEM EXECUTIVE · tier2 · lower-third · EXECUTIVE
+  A navy panel with a gold left edge and a gold hairline border wipes open
+  from the left. Inside: the speaker's name in gold Garamond, a short gold
+  rule, the role in ivory Lato, and the organization in spaced Cinzel caps.
+  A small BEM monogram tab sits at the panel's left.
+  Transparent background — only the panel paints. Never covers the face.
+  Format-adaptive: bottom-left in 16:9, raised and centered-left in 9:16.
+  Includes its own gentle exit (it is an overlay, not a scene).
+  Slots: name (~28 chars), role (~48 chars), org (~36 chars).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../tokens.css" />
+    <style>
+      html, body { margin: 0; background: transparent; }
+
+      #bem-lt {
+        position: absolute; left: 0; top: 0; overflow: hidden;
+        background: transparent;
+        font-family: var(--font-body);
+      }
+
+      #bem-lt .panel {
+        position: absolute;
+        left: calc(96 * var(--u)); bottom: calc(110 * var(--u));
+        display: flex; align-items: stretch;
+      }
+      #bem-lt .reveal {
+        display: flex; align-items: stretch;
+        background: rgba(var(--navy-rgb), 0.90);
+        border: var(--hairline) solid rgba(var(--gold-rgb), 0.55);
+        border-left: none;
+        box-shadow: 0 calc(18 * var(--u)) calc(50 * var(--u)) rgba(0, 8, 24, 0.45);
+      }
+      #bem-lt.fmt-portrait .panel { left: calc(60 * var(--u)); bottom: calc(560 * var(--u)); max-width: calc(880 * var(--u)); }
+      #bem-lt.fmt-square .panel   { left: calc(60 * var(--u)); bottom: calc(80 * var(--u)); max-width: calc(900 * var(--u)); }
+
+      #bem-lt .edge { width: calc(6 * var(--u)); background: var(--gold); transform-origin: center bottom; flex: none; }
+
+      #bem-lt .tab {
+        flex: none;
+        width: calc(118 * var(--u));
+        display: flex; align-items: center; justify-content: center;
+        border-right: var(--hairline) solid rgba(var(--gold-rgb), 0.35);
+      }
+      #bem-lt .mono {
+        width: calc(64 * var(--u)); height: calc(64 * var(--u));
+        box-sizing: border-box;
+        border: calc(2 * var(--u)) solid var(--gold-bright);
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: var(--wt-med);
+        font-size: calc(25 * var(--u)); color: var(--white); line-height: 1;
+      }
+
+      #bem-lt .body { padding: calc(26 * var(--u)) calc(48 * var(--u)) calc(28 * var(--u)) calc(36 * var(--u)); }
+
+      #bem-lt .name {
+        font-family: var(--font-display); font-weight: var(--wt-semi);
+        font-size: calc(54 * var(--u)); line-height: 1.02;
+        color: var(--gold); white-space: nowrap;
+      }
+      #bem-lt .rule {
+        width: calc(90 * var(--u)); height: calc(2.5 * var(--u));
+        background: var(--gold); opacity: 0.85;
+        margin: calc(14 * var(--u)) 0 calc(14 * var(--u));
+        transform-origin: left center;
+      }
+      #bem-lt .role {
+        font-family: var(--font-body); font-weight: var(--wt-reg);
+        font-size: calc(28 * var(--u)); line-height: 1.3;
+        color: var(--ivory); white-space: nowrap;
+      }
+      #bem-lt .org {
+        margin-top: calc(10 * var(--u));
+        font-family: var(--font-caps); font-weight: var(--wt-semi);
+        font-size: calc(18 * var(--u)); letter-spacing: var(--track-label);
+        color: rgba(var(--gold-rgb), 0.92); text-transform: uppercase; white-space: nowrap;
+      }
+      #bem-lt.fmt-portrait .name { font-size: calc(48 * var(--u)); white-space: normal; }
+      #bem-lt.fmt-portrait .role,
+      #bem-lt.fmt-portrait .org { white-space: normal; }
+    </style>
+  </head>
+  <body>
+    <div id="bem-lt" class="bem-root"
+         data-composition-id="bem-lt"
+         data-start="0"
+         data-duration="6"
+         data-width="1920"
+         data-height="1080">
+
+      <div class="panel">
+        <div class="edge"></div>
+        <div class="reveal">
+        <div class="tab"><div class="mono">BEM</div></div>
+        <div class="body">
+          <div class="name" data-slot="name">Derrick Pledger</div>
+          <div class="rule"></div>
+          <div class="role" data-slot="role">Chief Digital and Information Officer</div>
+          <div class="org" data-slot="org">Maximus</div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var ID = "bem-lt";
+        var root = document.getElementById(ID);
+        var W = +root.dataset.width, H = +root.dataset.height;
+        root.style.width = W + "px"; root.style.height = H + "px";
+        root.style.setProperty("--u", (Math.min(W, H) / 1080) + "px");
+        root.classList.add(W > H * 1.1 ? "fmt-landscape" : H > W * 1.1 ? "fmt-portrait" : "fmt-square");
+
+        var DURATION = +root.dataset.duration || 6;
+        var q = function (s) { return "#" + ID + " " + s; };
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        /* gold edge rises, then the panel wipes open from it */
+        tl.from(q(".edge"), { scaleY: 0, duration: 0.6, ease: "power2.inOut" }, 0.1);
+        tl.fromTo(q(".reveal"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power3.inOut" }, 0.35);
+        tl.from(q(".mono"), { autoAlpha: 0, y: 10, duration: 0.7, ease: "power3.out" }, 0.75);
+
+        /* text rises and settles in reading order */
+        tl.from(q(".name"), { autoAlpha: 0, y: 14, duration: 0.8, ease: "power3.out" }, 0.85);
+        tl.from(q(".rule"), { scaleX: 0, duration: 0.8, ease: "power2.inOut" }, 1.05);
+        tl.from(q(".role"), { autoAlpha: 0, y: 10, duration: 0.7, ease: "power3.out" }, 1.2);
+        tl.from(q(".org"), { autoAlpha: 0, y: 8, duration: 0.7, ease: "power3.out" }, 1.4);
+
+        /* gentle exit: content fades, panel closes back to the edge */
+        var OUT = DURATION - 0.75;
+        tl.to(q(".body, .tab"), { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, OUT);
+        tl.to(q(".reveal"), { clipPath: "inset(0% 100% 0% 0%)", duration: 0.5, ease: "power2.in" }, OUT + 0.1);
+        tl.to(q(".edge"), { scaleY: 0, duration: 0.25, ease: "power2.in" }, OUT + 0.45);
+        tl.set(q(".panel"), { autoAlpha: 0 }, DURATION - 0.01);
+
+        tl.set({}, {}, DURATION);
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </body>
+</html>

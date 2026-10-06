@@ -1,7 +1,7 @@
 {
   "generated_by": "scripts/style-library/build-registry.mjs",
-  "styleCount": 2,
-  "cardCount": 406,
+  "styleCount": 3,
+  "cardCount": 410,
   "tiers": [
     "tier1",
     "tier2",
@@ -8592,6 +8592,111 @@
           "preview": {
             "mp4": "02-kallaway/preview/kallaway.t2.label.warning.mp4",
             "poster": "02-kallaway/preview/kallaway.t2.label.warning.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bem-executive",
+      "number": "03",
+      "name": "BEM Executive",
+      "status": "draft",
+      "folder": "03-bem-executive",
+      "inspiration": "Black Executive Men brand: website banner, BEM monogram, Sponsorship Summit poster, executive office scene, and the Executive Fireside Chats series overview. Reference images live in references/.",
+      "palette": {
+        "bg": "#011B42",
+        "fg": "#FFFFFF",
+        "accent": "#E0B264",
+        "navyDeep": "#000F29",
+        "navyRoyal": "#0B3470",
+        "goldBright": "#E3A91A",
+        "goldMuted": "#8E774D",
+        "ivory": "#F4EFE4",
+        "notes": "Navy + gold + white. Gold stays around 10% of the frame. goldBright is reserved for the monogram frame. Mirrored in tokens.css."
+      },
+      "fonts": {
+        "display": "EB Garamond",
+        "caps": "Cinzel",
+        "body": "Lato",
+        "mono": "Lato",
+        "notes": "EB Garamond = wordmark, names, headlines. Cinzel = Trajan-style event titles, kickers, URLs. Lato = roles, captions, body (Gill Sans stand-in)."
+      },
+      "cardCount": 4,
+      "cards": [
+        {
+          "id": "bem-executive.custom.intro",
+          "style": "bem-executive",
+          "tier": "custom",
+          "purpose": "intro",
+          "file": "03-bem-executive/cards/custom/bem-intro.html",
+          "slots": [
+            "tagline",
+            "kicker"
+          ],
+          "duration": {
+            "min": 4,
+            "max": 6
+          },
+          "preview": {
+            "mp4": "03-bem-executive/preview/bem-executive.custom.intro.mp4",
+            "poster": "03-bem-executive/preview/bem-executive.custom.intro.png"
+          }
+        },
+        {
+          "id": "bem-executive.custom.outro",
+          "style": "bem-executive",
+          "tier": "custom",
+          "purpose": "outro",
+          "file": "03-bem-executive/cards/custom/bem-outro.html",
+          "slots": [
+            "kicker",
+            "cta",
+            "sub",
+            "url"
+          ],
+          "duration": {
+            "min": 6,
+            "max": 10
+          },
+          "preview": {
+            "mp4": "03-bem-executive/preview/bem-executive.custom.outro.mp4",
+            "poster": "03-bem-executive/preview/bem-executive.custom.outro.png"
+          }
+        },
+        {
+          "id": "bem-executive.t2.lower-third.executive",
+          "style": "bem-executive",
+          "tier": "tier2",
+          "purpose": "lower-third",
+          "file": "03-bem-executive/cards/tier2/t2-lt-executive.html",
+          "slots": [
+            "name",
+            "role",
+            "org"
+          ],
+          "duration": {
+            "min": 4,
+            "max": 8
+          },
+          "preview": {
+            "mp4": "03-bem-executive/preview/bem-executive.t2.lower-third.executive.mp4",
+            "poster": "03-bem-executive/preview/bem-executive.t2.lower-third.executive.png"
+          }
+        },
+        {
+          "id": "bem-executive.custom.captions",
+          "style": "bem-executive",
+          "tier": "custom",
+          "purpose": "captions",
+          "file": "03-bem-executive/cards/custom/bem-captions.html",
+          "slots": [],
+          "duration": {
+            "min": 1,
+            "max": 3600
+          },
+          "preview": {
+            "mp4": "03-bem-executive/preview/bem-executive.custom.captions.mp4",
+            "poster": "03-bem-executive/preview/bem-executive.custom.captions.png"
           }
         }
       ]

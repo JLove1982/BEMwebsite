@@ -35,6 +35,7 @@ For one stage, load the matching local skill:
 | Preview, lint, and rendering | `hyperframes-cli` |
 | Timeline animation | `gsap` |
 | Install HyperFrames catalog blocks | `hyperframes-registry` |
+| Black Executive Men brand (any BEM video) | `bem-brand` |
 
 Before a creative session read `MOTION_PHILOSOPHY.md` and the project's DESIGN.md.
 The philosophy's fast sizzle pacing is a style reference. Give educational speech

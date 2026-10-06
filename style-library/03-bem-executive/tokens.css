@@ -1,0 +1,87 @@
+/* ============================================================================
+   BEM EXECUTIVE — style tokens (Black Executive Men brand)
+   Single source of palette / type / motion for every BEM card. Cards reference
+   these vars and never hardcode colors, fonts, or easings. See DESIGN.md.
+   Aesthetic: boardroom prestige. Deep navy canvas, warm gold hairlines and
+   type, white classical serif, letter-spaced small caps, slow confident reveals.
+   ============================================================================ */
+
+/* Type. The HyperFrames compiler embeds supported fonts by name at render time;
+   this @import is what makes standalone / browser preview show the right faces. */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=block");
+
+:root {
+  /* --- palette (mirror style.json + DESIGN.md) ----------------------------- */
+  --navy:        #011B42;   /* primary canvas — the banner / monogram navy */
+  --navy-deep:   #000F29;   /* vignette edges, depth wells */
+  --navy-royal:  #0B3470;   /* lifted navy — panels, the PDF's textured blue */
+  --gold:        #E0B264;   /* primary accent — wordmark, rules, highlights */
+  --gold-bright: #E3A91A;   /* monogram frame gold — logo border only */
+  --gold-muted:  #8E774D;   /* hairline arcs, globe lines, faint ornament */
+  --white:       #FFFFFF;   /* primary text on navy */
+  --ivory:       #F4EFE4;   /* body copy on navy (softer than pure white) */
+  --onyx:        #141210;   /* optional "executive office" black canvas */
+
+  --text:       var(--white);
+  --text-dim:   rgba(244, 239, 228, 0.74);
+  --text-faint: rgba(244, 239, 228, 0.46);
+
+  /* rgb triplets for rgba() without re-typing hex */
+  --navy-rgb:      1, 27, 66;
+  --navy-deep-rgb: 0, 15, 41;
+  --gold-rgb:      224, 178, 100;
+
+  /* semantic aliases the blueprint contract expects */
+  --bg:     var(--navy);
+  --fg:     var(--text);
+  --muted:  var(--text-dim);
+  --accent: var(--gold);
+
+  /* --- typography ---------------------------------------------------------- */
+  /* EB Garamond = the wordmark voice (names, headlines, the "BEM" monogram).
+     Cinzel = Trajan-style inscriptional caps (event titles, kickers, URLs).
+     Lato = humanist sans for roles, captions, body (stand-in for Gill Sans). */
+  --font-display: "EB Garamond", "Garamond", Georgia, serif;
+  --font-caps:    "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-body:    "Lato", "Gill Sans", "Helvetica Neue", sans-serif;
+  --font-label:   var(--font-caps);
+
+  --wt-light: 300;
+  --wt-reg:   400;
+  --wt-med:   500;
+  --wt-semi:  600;
+  --wt-bold:  700;
+
+  --track-wordmark: 0.10em;  /* BLACK EXECUTIVE MEN */
+  --track-caps:     0.28em;  /* TO ADVANCE BLACK MALE ENTERPRISE LEADERSHIP */
+  --track-label:    0.18em;
+
+  /* --- line + shape -------------------------------------------------------- */
+  --rule:      3px;          /* the gold underline under the wordmark */
+  --hairline:  1.5px;        /* frames, panel borders, arcs */
+  --radius:    0px;          /* square corners — the monogram box. No pills. */
+
+  /* --- motion — executive & polished --------------------------------------- */
+  /* Slow, confident, no overshoot. GSAP string eases used in card timelines. */
+  --gsap-reveal: power3.out;     /* default entrance */
+  --gsap-glide:  expo.out;       /* wordmark tracking-in, big type */
+  --gsap-draw:   power2.inOut;   /* rules, frames, arcs drawing on */
+  --gsap-drift:  sine.inOut;     /* ambient push-ins */
+  --gsap-exit:   power2.in;      /* the rare exit */
+  --dur-in:   0.9s;
+  --dur-draw: 1.2s;
+  --dur-out:  0.6s;
+
+  /* --- textures (deterministic) ------------------------------------------- */
+  /* Localized light pools only — never a full-screen linear gradient. */
+  --vignette: radial-gradient(130% 120% at 50% 42%, rgba(var(--navy-rgb), 0) 48%, rgba(var(--navy-deep-rgb), 0.85) 100%);
+  --pool:     radial-gradient(60% 55% at 50% 46%, rgba(11, 52, 112, 0.55) 0%, rgba(11, 52, 112, 0) 70%);
+  /* Fine grain keeps navy from banding in H.264 and echoes the PDF's stone texture. */
+  --tex-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- format scaling -----------------------------------------------------------
+   Every BEM card sets --u on its root from data-width/data-height (1 at 1080p
+   landscape) and a .fmt-landscape | .fmt-portrait | .fmt-square class, so the
+   same card works for 16:9, 9:16 and 1:1. Size things as calc(N * var(--u)). */
+.bem-root { --u: 1px; }
